@@ -1,0 +1,186 @@
+import React from 'react';
+import { Mail, Linkedin, Users } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+
+const Team = () => {
+  const teamMembers = [
+    {
+      name: "Rajesh Kumar",
+      role: "Founder & CEO",
+      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+      description: "With over 15 years in financial markets, Rajesh founded Grovvest Academy to democratize investment education. Former investment banker turned educator.",
+      email: "rajesh@grovvestacademy.com",
+      linkedin: "linkedin.com/in/rajeshkumar"
+    },
+    {
+      name: "Priya Sharma",
+      role: "Head of Content & Strategy",
+      photo: "https://images.unsplash.com/photo-1494790108755-2616b6b9cc10?w=400&h=400&fit=crop&crop=face",
+      description: "Priya designs our comprehensive curriculum with 12+ years in financial education. She ensures complex concepts are simplified for beginners.",
+      email: "priya@grovvestacademy.com",
+      linkedin: "linkedin.com/in/priyasharma"
+    },
+    {
+      name: "Amit Patel",
+      role: "Senior Financial Advisor",
+      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      description: "Certified Financial Planner with expertise in mutual funds and SIP strategies. Amit has helped thousands of investors achieve their financial goals.",
+      email: "amit@grovvestacademy.com",
+      linkedin: "linkedin.com/in/amitpatel"
+    },
+    {
+      name: "Neha Singh",
+      role: "Market Research Analyst",
+      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+      description: "Neha brings deep market insights and research expertise. She tracks market trends and helps create data-driven investment strategies for our students.",
+      email: "neha@grovvestacademy.com",
+      linkedin: "linkedin.com/in/nehasingh"
+    },
+    {
+      name: "Vikram Mehta",
+      role: "Technology & Operations Lead",
+      photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
+      description: "Vikram ensures our platform runs smoothly and develops innovative tools for better learning experiences. Tech enthusiast with fintech expertise.",
+      email: "vikram@grovvestacademy.com",
+      linkedin: "linkedin.com/in/vikrammehta"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-green-50 via-white to-green-50 py-20">
+        <div className="container-width section-padding">
+          <div className="text-center max-w-4xl mx-auto scroll-reveal">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Meet Our <span className="gradient-text">Expert Team</span>
+            </h1>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Our dedicated team of financial experts, educators, and technology professionals 
+              are committed to making investment education accessible to everyone.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Grid */}
+      <section className="py-20 bg-white">
+        <div className="container-width section-padding">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {teamMembers.map((member, index) => (
+              <Card 
+                key={index} 
+                className="group hover-lift scroll-reveal border-0 shadow-lg overflow-hidden"
+              >
+                <div className="relative">
+                  <img 
+                    src={member.photo} 
+                    alt={member.name}
+                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <CardContent className="p-6">
+                  <div className="text-center mb-4">
+                    <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-green-700 transition-colors duration-300">
+                      {member.name}
+                    </h3>
+                    <p className="text-green-600 font-medium mb-3">{member.role}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {member.description}
+                    </p>
+                  </div>
+                  
+                  <div className="flex justify-center space-x-4 pt-4 border-t border-gray-100">
+                    <a 
+                      href={`mailto:${member.email}`}
+                      className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full text-green-700 hover:bg-green-200 transition-colors duration-300"
+                    >
+                      <Mail size={16} />
+                    </a>
+                    <a 
+                      href={`https://${member.linkedin}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full text-green-700 hover:bg-green-200 transition-colors duration-300"
+                    >
+                      <Linkedin size={16} />
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Values Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container-width section-padding">
+          <div className="text-center mb-16 scroll-reveal">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Our <span className="gradient-text">Core Values</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              What drives us to deliver exceptional financial education
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Transparency",
+                description: "We believe in clear, honest communication about investments and market realities.",
+                icon: "🔍"
+              },
+              {
+                title: "Accessibility",
+                description: "Making complex financial concepts simple and accessible to everyone.",
+                icon: "🎯"
+              },
+              {
+                title: "Excellence",
+                description: "Continuous improvement in our teaching methods and course content quality.",
+                icon: "⭐"
+              }
+            ].map((value, index) => (
+              <Card 
+                key={index} 
+                className="text-center p-8 hover-lift scroll-reveal border-0 shadow-md"
+              >
+                <div className="text-4xl mb-4">{value.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+                <p className="text-gray-600">{value.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Join Team CTA */}
+      <section className="py-20 bg-gradient-to-r from-green-700 to-green-600 text-white">
+        <div className="container-width section-padding text-center scroll-reveal">
+          <div className="max-w-3xl mx-auto">
+            <Users className="w-16 h-16 mx-auto mb-6 text-green-200" />
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+              Want to Join Our Team?
+            </h2>
+            <p className="text-xl mb-8 text-green-100">
+              We're always looking for passionate individuals who want to make a difference in financial education.
+            </p>
+            <a 
+              href="mailto:careers@grovvestacademy.com"
+              className="inline-flex items-center px-8 py-3 bg-white text-green-700 font-medium rounded-lg hover:bg-green-50 transition-colors duration-300"
+            >
+              <Mail className="mr-2 w-5 h-5" />
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Team;

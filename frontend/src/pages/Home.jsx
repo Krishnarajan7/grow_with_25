@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, TrendingUp, BookOpen, Users, Shield, Star, Calculator, PiggyBank, Trophy, Target } from 'lucide-react';
+import { ArrowRight, TrendingUp, BookOpen, Users, Shield, Star, Calculator, PiggyBank, Trophy, Target, Instagram, MessageCircle, Award, CheckCircle, Download, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import StockMarketTicker from '@/components/StockMarketTicker';
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -50,12 +51,12 @@ const Home = () => {
     {
       name: "Priya Sharma",
       title: "Software Engineer",
-      quote: "Grow with 25 helped me understand mutual funds and start investing with confidence. The courses are well-structured and easy to follow.",
+      quote: "Grovvest Academy helped me understand mutual funds and start investing with confidence. The courses are well-structured and easy to follow.",
     },
     {
       name: "Amit Patel",
       title: "Business Owner",
-      quote: "I was always intimidated by investing, but Grow with 25 made it simple and accessible. Now I'm building a solid financial future.",
+      quote: "I was always intimidated by investing, but Grovvest Academy made it simple and accessible. Now I'm building a solid financial future.",
     },
   ];
 
@@ -63,6 +64,12 @@ const Home = () => {
     { label: "Courses", value: "25+" },
     { label: "Happy Investors", value: "10K+" },
     { label: "Years of Experience", value: "5+" },
+  ];
+
+  const certificateFeatures = [
+    { icon: CheckCircle, text: "Official Grovvest Academy Certificate" },
+    { icon: Download, text: "Downloadable PDF format" },
+    { icon: Share2, text: "LinkedIn profile ready" },
   ];
 
   return (
@@ -85,7 +92,7 @@ const Home = () => {
                   Grow Your <span className="gradient-text">Wealth</span> with Smart Investing
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
-                  Master mutual funds, SIPs, and investment strategies with expert guidance. 
+                  Master mutual funds, SIPs, and investment strategies with expert guidance at Grovvest Academy. 
                   Start your journey to financial freedom today.
                 </p>
               </div>
@@ -109,6 +116,29 @@ const Home = () => {
                     View Dashboard
                   </Button>
                 </Link>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center space-x-4 pt-4">
+                <span className="text-gray-600 font-medium">Follow us:</span>
+                <a 
+                  href="https://www.instagram.com/grow.with25?igsh=M25rcTRuMmZ2YTN5" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-green-700 hover:text-green-800 transition-colors duration-300"
+                >
+                  <Instagram size={20} />
+                  <span className="font-medium">@grow.with25</span>
+                </a>
+                <a 
+                  href="https://chat.whatsapp.com/your-group-link" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-green-700 hover:text-green-800 transition-colors duration-300"
+                >
+                  <MessageCircle size={20} />
+                  <span className="font-medium">WhatsApp Group</span>
+                </a>
               </div>
             </div>
             
@@ -140,6 +170,9 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Stock Market Ticker */}
+      <StockMarketTicker />
+
       {/* Stats Section */}
       <section className="py-16 bg-white">
         <div className="container-width section-padding">
@@ -157,12 +190,79 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Certification Section - Redesigned with green theme */}
+      <section className="py-20 bg-gradient-to-br from-green-600 to-green-700 text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-green-500 rounded-full opacity-20 -translate-y-32 translate-x-32"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-800 rounded-full opacity-20 translate-y-32 -translate-x-32"></div>
+        </div>
+        <div className="container-width section-padding relative">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="scroll-reveal space-y-8">
+              <div className="space-y-6">
+                <div className="inline-flex items-center space-x-3 bg-green-500/20 px-4 py-2 rounded-full">
+                  <Award className="w-6 h-6 text-yellow-300" />
+                  <span className="font-medium text-green-100">Professional Certification</span>
+                </div>
+                <h2 className="text-3xl lg:text-4xl font-bold leading-tight">
+                  Earn Industry-Recognized Certificates
+                </h2>
+                <p className="text-xl text-green-100 leading-relaxed">
+                  Complete our comprehensive courses and receive certificates that showcase your financial expertise 
+                  and boost your investment knowledge credentials in the professional world.
+                </p>
+              </div>
+              
+              <div className="space-y-4">
+                {certificateFeatures.map((feature, index) => {
+                  const Icon = feature.icon;
+                  return (
+                    <div key={index} className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-green-100">{feature.text}</span>
+                    </div>
+                  );
+                })}
+              </div>
+              
+              <div className="pt-4">
+                <Link to="/courses">
+                  <Button 
+                    size="lg" 
+                    className="bg-white text-green-700 hover:bg-green-50 font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    Start Your Certification Journey
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            
+            <div className="scroll-reveal">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-lg opacity-20 blur"></div>
+                <img 
+                  src="/lovable-uploads/b1aedc16-311b-4130-97f6-045b926936ec.png" 
+                  alt="Grovvest Academy Certificate" 
+                  className="relative w-full max-w-lg mx-auto rounded-lg shadow-2xl border-4 border-white/20 transform hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse shadow-lg">
+                  <Award className="w-8 h-8 text-green-700" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-20 bg-gray-50">
         <div className="container-width section-padding">
           <div className="text-center mb-16 scroll-reveal">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="gradient-text">Grow with 25</span>?
+              Why Choose <span className="gradient-text">Grovvest Academy</span>?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Comprehensive financial education designed for beginners and experienced investors alike
@@ -289,7 +389,7 @@ const Home = () => {
               Ready to Start Your Investment Journey?
             </h2>
             <p className="text-xl mb-8 text-green-100">
-              Join thousands of successful investors who started with Grow with 25
+              Join thousands of successful investors who started with Grovvest Academy
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/courses">
