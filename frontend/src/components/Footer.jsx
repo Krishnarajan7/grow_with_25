@@ -5,14 +5,14 @@ import { Instagram, MessageCircle } from 'lucide-react';
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="container-width section-padding py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="/lovable-uploads/c278ae84-f54f-4986-8faf-6d272a53e45d.png" 
-                alt="Grovvest Academy Logo" 
+              <img
+                src="/logo.png"
+                alt="Grovvest Academy Logo"
                 className="h-12 w-auto filter brightness-0 invert"
               />
               <span className="text-xl font-bold">Grovvest Academy</span>
@@ -22,18 +22,18 @@ const Footer = () => {
               mutual fund education and personal finance guidance. Start your wealth-building journey today.
             </p>
             <div className="flex space-x-4">
-              <a 
-                href="https://www.instagram.com/grow.with25?igsh=M25rcTRuMmZ2YTN5" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/grow.with25"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-400 hover:text-green-400 transition-colors"
               >
                 <Instagram size={20} />
                 <span>Instagram</span>
               </a>
-              <a 
-                href="https://chat.whatsapp.com/your-group-link" 
-                target="_blank" 
+              <a
+                href="https://chat.whatsapp.com/your-group-link"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-400 hover:text-green-400 transition-colors"
               >
@@ -47,26 +47,10 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Learning</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to="/courses" className="text-gray-400 hover:text-green-400 transition-colors">
-                  Mutual Fund Basics
-                </Link>
-              </li>
-              <li>
-                <Link to="/courses" className="text-gray-400 hover:text-green-400 transition-colors">
-                  Investment Strategies
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-gray-400 hover:text-green-400 transition-colors">
-                  Market Insights
-                </Link>
-              </li>
-              <li>
-                <Link to="/premium" className="text-gray-400 hover:text-green-400 transition-colors">
-                  Premium Content
-                </Link>
-              </li>
+              <li><Link to="/courses" className="text-gray-400 hover:text-green-400">Mutual Fund Basics</Link></li>
+              <li><Link to="/courses" className="text-gray-400 hover:text-green-400">Investment Strategies</Link></li>
+              <li><Link to="/blog" className="text-gray-400 hover:text-green-400">Market Insights</Link></li>
+              <li><Link to="/premium" className="text-gray-400 hover:text-green-400">Premium Content</Link></li>
             </ul>
           </div>
 
@@ -74,38 +58,18 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Support</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to="/contact" className="text-gray-400 hover:text-green-400 transition-colors">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/team" className="text-gray-400 hover:text-green-400 transition-colors">
-                  Meet Our Team
-                </Link>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
-                  Terms of Service
-                </a>
-              </li>
+              <li><Link to="/contact" className="text-gray-400 hover:text-green-400">Contact Us</Link></li>
+              <li><Link to="/team" className="text-gray-400 hover:text-green-400">Meet Our Team</Link></li>
+              <li><a href="#" className="text-gray-400 hover:text-green-400">Help Center</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-green-400">Privacy Policy</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-green-400">Terms of Service</a></li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 Grovvest Academy. All rights reserved. Empowering financial growth through education.
+            © {new Date().getFullYear()} Grovvest Academy. All rights reserved. Empowering financial growth through education.
           </p>
           <p className="text-gray-500 text-sm mt-2">
             Investment education • Mutual Fund Guidance • Personal Finance Growth

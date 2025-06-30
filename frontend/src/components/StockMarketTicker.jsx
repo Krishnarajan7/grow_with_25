@@ -17,34 +17,35 @@ const StockMarketTicker = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
-      // Simulate live updates with random changes
-      setMarketData(prevData => 
+
+      setMarketData(prevData =>
         prevData.map(item => {
-          const randomChange = (Math.random() - 0.5) * 0.02; // Random change between -1% to +1%
+          const randomChange = (Math.random() - 0.5) * 0.02;
           const basePrice = parseFloat(item.price.replace(/[₹,]/g, ''));
-          const newPrice = basePrice + (basePrice * randomChange);
+          const newPrice = basePrice + basePrice * randomChange;
           const changeValue = newPrice - basePrice;
           const changePercentage = (changeValue / basePrice) * 100;
-          
+
           return {
             ...item,
-            price: item.symbol === 'GOLD' || item.symbol === 'SILVER' 
-              ? `₹${newPrice.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}` 
-              : newPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+            price:
+              item.symbol === 'GOLD' || item.symbol === 'SILVER'
+                ? `₹${newPrice.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
+                : newPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','),
             change: changeValue >= 0 ? `+${Math.abs(changeValue).toFixed(2)}` : `-${Math.abs(changeValue).toFixed(2)}`,
             percentage: changeValue >= 0 ? `+${changePercentage.toFixed(2)}%` : `${changePercentage.toFixed(2)}%`,
             status: changeValue >= 0 ? 'up' : 'down'
           };
         })
       );
-    }, 10000); // Update every 10 seconds
+    }, 10000);
 
     return () => clearInterval(timer);
   }, []);
 
   const formatTime = (date) => {
-    return date.toLocaleTimeString('en-IN', { 
-      hour: '2-digit', 
+    return date.toLocaleTimeString('en-IN', {
+      hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
       timeZone: 'Asia/Kolkata'
@@ -63,7 +64,7 @@ const StockMarketTicker = () => {
             Last Updated: {formatTime(currentTime)} IST
           </div>
         </div>
-        
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {marketData.map((item, index) => (
             <Card key={index} className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-colors">
@@ -89,7 +90,7 @@ const StockMarketTicker = () => {
             </Card>
           ))}
         </div>
-        
+
         <div className="mt-4 text-center">
           <p className="text-xs text-gray-500">
             Market data is simulated for demonstration purposes. For real trading decisions, please consult official sources.

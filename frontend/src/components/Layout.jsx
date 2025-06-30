@@ -4,7 +4,7 @@ import Footer from './Footer';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Layout = ({ children }) => {
-  useScrollAnimation();
+  useScrollAnimation(); // ✅ Correct: call custom hook at top level
 
   return (
     <div className="min-h-screen flex flex-col">
