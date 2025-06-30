@@ -91,7 +91,6 @@ const Premium = () => {
   ];
 
   const handlePlanSelect = (planName) => {
-    if (typeof planName !== 'string') return;
     if (planName === 'Free') return;
     console.log(`Selected plan: ${planName}`);
     alert(`Payment integration would be implemented here for ${planName}`);
@@ -100,6 +99,7 @@ const Premium = () => {
   return (
     <div className="section-padding py-12">
       <div className="container-width">
+        {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             Choose Your <span className="gradient-text">Learning Plan</span>
@@ -110,6 +110,7 @@ const Premium = () => {
           </p>
         </div>
 
+        {/* Premium Features */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
             What Makes Premium Special?
@@ -130,6 +131,7 @@ const Premium = () => {
           </div>
         </div>
 
+        {/* Pricing Plans */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {plans.map((plan, index) => (
             <Card key={index} className={`relative ${plan.recommended ? 'ring-2 ring-green-500 shadow-xl scale-105' : 'hover:shadow-lg'} transition-all`}>
@@ -140,7 +142,6 @@ const Premium = () => {
                   </Badge>
                 </div>
               )}
-              
               <CardHeader className="text-center pb-4">
                 <CardTitle className="text-2xl font-bold text-gray-900">{plan.name}</CardTitle>
                 <div className="mt-4">
@@ -157,7 +158,6 @@ const Premium = () => {
                 </div>
                 <p className="text-gray-600 mt-4">{plan.description}</p>
               </CardHeader>
-              
               <CardContent className="space-y-6">
                 <div className="space-y-3">
                   {plan.features.map((feature, featureIndex) => (
@@ -173,7 +173,6 @@ const Premium = () => {
                     </div>
                   ))}
                 </div>
-                
                 <Button 
                   className={`w-full ${plan.recommended ? 'btn-primary' : plan.name === 'Free' ? 'bg-gray-200 text-gray-600 cursor-not-allowed' : 'btn-outline'}`}
                   onClick={() => handlePlanSelect(plan.name)}
@@ -186,6 +185,7 @@ const Premium = () => {
           ))}
         </div>
 
+        {/* FAQ */}
         <div className="bg-gray-50 rounded-2xl p-8">
           <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
             Frequently Asked Questions
@@ -222,6 +222,7 @@ const Premium = () => {
           </div>
         </div>
 
+        {/* Bottom CTA */}
         <div className="text-center mt-16">
           <div className="bg-gradient-to-r from-green-600 to-green-400 rounded-2xl p-8 text-white">
             <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Financial Future?</h2>

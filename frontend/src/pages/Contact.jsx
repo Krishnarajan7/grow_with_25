@@ -4,7 +4,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
 import { Calendar, User, BookOpen, Home } from 'lucide-react';
 
 const Contact = () => {
@@ -33,7 +39,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Contact form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you soon.');
+    alert("Thank you for your message! We'll get back to you soon.");
     setFormData({
       name: '',
       email: '',
@@ -91,9 +97,7 @@ const Contact = () => {
       <div className="container-width">
         {/* Header */}
         <div className="text-center mb-16 scroll-reveal">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Get in Touch
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Get in Touch</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Have questions about our courses, need technical support, or want to explore partnerships? 
             We're here to help you succeed in your investment journey.
@@ -141,7 +145,10 @@ const Contact = () => {
 
                   <div className="space-y-2">
                     <Label htmlFor="category">Category</Label>
-                    <Select value={formData.category} onValueChange={(value) => handleSelectChange(value, 'category')}>
+                    <Select
+                      value={formData.category}
+                      onValueChange={(value) => handleSelectChange(value, 'category')}
+                    >
                       <SelectTrigger>
                         <SelectValue placeholder="Select a category" />
                       </SelectTrigger>
@@ -260,9 +267,7 @@ const Contact = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16 scroll-reveal">
           <div className="bg-gray-50 rounded-2xl p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Still Have Questions?
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
               Can't find what you're looking for? Our support team is always ready to help. 
               We typically respond within a few hours during business hours.

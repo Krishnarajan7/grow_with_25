@@ -46,9 +46,27 @@ const Team = () => {
     }
   ];
 
+  const values = [
+    {
+      title: "Transparency",
+      description: "We believe in clear, honest communication about investments and market realities.",
+      icon: "🔍"
+    },
+    {
+      title: "Accessibility",
+      description: "Making complex financial concepts simple and accessible to everyone.",
+      icon: "🎯"
+    },
+    {
+      title: "Excellence",
+      description: "Continuous improvement in our teaching methods and course content quality.",
+      icon: "⭐"
+    }
+  ];
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="bg-gradient-to-br from-green-50 via-white to-green-50 py-20">
         <div className="container-width section-padding">
           <div className="text-center max-w-4xl mx-auto scroll-reveal">
@@ -115,7 +133,7 @@ const Team = () => {
         </div>
       </section>
 
-      {/* Team Values Section */}
+      {/* Core Values */}
       <section className="py-20 bg-gray-50">
         <div className="container-width section-padding">
           <div className="text-center mb-16 scroll-reveal">
@@ -128,23 +146,7 @@ const Team = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Transparency",
-                description: "We believe in clear, honest communication about investments and market realities.",
-                icon: "🔍"
-              },
-              {
-                title: "Accessibility",
-                description: "Making complex financial concepts simple and accessible to everyone.",
-                icon: "🎯"
-              },
-              {
-                title: "Excellence",
-                description: "Continuous improvement in our teaching methods and course content quality.",
-                icon: "⭐"
-              }
-            ].map((value, index) => (
+            {values.map((value, index) => (
               <Card 
                 key={index} 
                 className="text-center p-8 hover-lift scroll-reveal border-0 shadow-md"
@@ -158,7 +160,7 @@ const Team = () => {
         </div>
       </section>
 
-      {/* Join Team CTA */}
+      {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-green-700 to-green-600 text-white">
         <div className="container-width section-padding text-center scroll-reveal">
           <div className="max-w-3xl mx-auto">

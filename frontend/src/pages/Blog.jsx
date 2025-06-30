@@ -43,7 +43,7 @@ const Blog = () => {
     },
     {
       id: 3,
-      title: 'Understanding Market Volatility: A Beginner\'s Guide',
+      title: "Understanding Market Volatility: A Beginner's Guide",
       excerpt: 'Learn how market fluctuations affect your mutual fund investments and strategies to navigate volatility.',
       author: 'Anita Desai',
       date: '2024-01-10',
@@ -252,6 +252,7 @@ const Blog = () => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
