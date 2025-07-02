@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -126,7 +127,7 @@
   }
 }
 
-/* Enhanced animations */
+/* Enhanced animations - Immediate visibility */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -179,15 +180,15 @@
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out;
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .animate-fade-in-left {
-  animation: fadeInLeft 0.8s ease-out;
+  animation: fadeInLeft 0.8s ease-out forwards;
 }
 
 .animate-fade-in-right {
-  animation: fadeInRight 0.8s ease-out;
+  animation: fadeInRight 0.8s ease-out forwards;
 }
 
 .animate-float {
@@ -204,6 +205,7 @@
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s cubic-bezier(0.25, 0.4, 0.25, 1);
+    animation-fill-mode: both;
   }
   
   .scroll-reveal.visible {
@@ -215,6 +217,7 @@
     opacity: 0;
     transform: translateX(-30px);
     transition: all 0.8s cubic-bezier(0.25, 0.4, 0.25, 1);
+    animation-fill-mode: both;
   }
   
   .scroll-reveal-left.visible {
@@ -226,6 +229,7 @@
     opacity: 0;
     transform: translateX(30px);
     transition: all 0.8s cubic-bezier(0.25, 0.4, 0.25, 1);
+    animation-fill-mode: both;
   }
   
   .scroll-reveal-right.visible {
@@ -237,12 +241,21 @@
     opacity: 0;
     transform: scale(0.95);
     transition: all 0.8s cubic-bezier(0.25, 0.4, 0.25, 1);
+    animation-fill-mode: both;
   }
   
   .scroll-reveal-scale.visible {
     opacity: 1;
     transform: scale(1);
   }
+
+  /* Staggered animations */
+  .scroll-reveal:nth-child(1) { transition-delay: 0.1s; }
+  .scroll-reveal:nth-child(2) { transition-delay: 0.2s; }
+  .scroll-reveal:nth-child(3) { transition-delay: 0.3s; }
+  .scroll-reveal:nth-child(4) { transition-delay: 0.4s; }
+  .scroll-reveal:nth-child(5) { transition-delay: 0.5s; }
+  .scroll-reveal:nth-child(6) { transition-delay: 0.6s; }
 
   /* Reduced motion for mobile devices */
   @media (max-width: 768px) {
