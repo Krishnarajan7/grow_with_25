@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button.jsx';
+import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,51 +37,48 @@ const Navbar = () => {
       scrolled ? 'bg-white/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
     }`}>
       <div className="container-width section-padding">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
               <img 
                 src="/lovable-uploads/c278ae84-f54f-4986-8faf-6d272a53e45d.png" 
                 alt="Grovvest Academy" 
-                className="h-10 w-10 rounded-full object-cover border-2 border-green-600 group-hover:border-green-700 transition-colors duration-300 shadow-sm"
+                className="h-14 w-14 rounded-full object-cover border-2 border-green-600 group-hover:border-green-700 transition-colors duration-300 shadow-sm"
               />
             </div>
-            <span className={`text-xl font-bold transition-colors duration-300 ${
+            <span className={`text-2xl font-bold transition-colors duration-300 ${
               scrolled ? 'text-gray-900' : 'text-gray-900'
             } group-hover:text-green-700`}>
               Grovvest Academy
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`relative font-medium transition-colors duration-300 ${
-                  isActive(item.href)
-                    ? 'text-green-700'
-                    : scrolled
-                    ? 'text-gray-600 hover:text-green-700'
-                    : 'text-gray-700 hover:text-green-700'
-                } after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full ${
-                  isActive(item.href) ? 'after:w-full' : ''
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-8">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`relative font-medium transition-colors duration-300 ${
+                    isActive(item.href)
+                      ? 'text-green-700'
+                      : scrolled
+                      ? 'text-gray-600 hover:text-green-700'
+                      : 'text-gray-700 hover:text-green-700'
+                  } after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-green-700 after:transition-all after:duration-300 hover:after:w-full ${
+                    isActive(item.href) ? 'after:w-full' : ''
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/login">
-              <Button variant="ghost" className="text-gray-600 hover:text-green-700 hover:bg-green-50 transition-all duration-300 font-medium">
-                Login
-              </Button>
-            </Link>
             <Link to="/premium">
               <Button className="btn-primary">
                 Get Premium
@@ -100,7 +98,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation - Improved */}
+        {/* Mobile Navigation */}
         <div className={`md:hidden transition-all duration-300 ease-in-out ${
           isOpen 
             ? 'max-h-96 opacity-100 visible' 
@@ -125,14 +123,6 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="pt-4 px-4 space-y-3 border-t border-gray-100">
-              <Link to="/login" onClick={() => setIsOpen(false)}>
-                <Button 
-                  variant="ghost" 
-                  className="w-full justify-start text-gray-600 hover:text-green-700 hover:bg-green-50 font-medium"
-                >
-                  Login
-                </Button>
-              </Link>
               <Link to="/premium" onClick={() => setIsOpen(false)}>
                 <Button className="w-full btn-primary shadow-md hover:shadow-lg">
                   Get Premium
