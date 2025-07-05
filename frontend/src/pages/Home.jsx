@@ -107,7 +107,7 @@ const Home = () => {
                     <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link to="/dashboard">
+                {/* <Link to="/dashboard">
                   <Button 
                     variant="outline" 
                     size="lg" 
@@ -115,7 +115,7 @@ const Home = () => {
                   >
                     View Dashboard
                   </Button>
-                </Link>
+                </Link> */}
               </div>
 
               {/* Social Links */}
@@ -244,7 +244,7 @@ const Home = () => {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-lg opacity-20 blur"></div>
                 <img 
-                  src="/lovable-uploads/b1aedc16-311b-4130-97f6-045b926936ec.png" 
+                  src="/images/certify.jpg" 
                   alt="Grovvest Academy Certificate" 
                   className="relative w-full max-w-lg mx-auto rounded-lg shadow-2xl border-4 border-white/20 transform hover:scale-105 transition-transform duration-300"
                 />
@@ -394,8 +394,9 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/courses">
                 <Button 
+                  variant="outline"
                   size="lg" 
-                  className="bg-white text-green-700 hover:bg-green-50 font-medium w-full sm:w-auto"
+                  className="bg-white text-green-700 hover:border-white hover:text-white font-medium w-full sm:w-auto"
                 >
                   Start Free Course
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -405,7 +406,7 @@ const Home = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-white text-white hover:bg-white hover:text-green-700 font-medium w-full sm:w-auto"
+                  className="border-white text-green-700 hover:bg-green-700 hover:text-white font-medium w-full sm:w-auto"
                 >
                   Explore Premium
                 </Button>
