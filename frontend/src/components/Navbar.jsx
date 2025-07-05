@@ -42,7 +42,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
               <img 
-                src="/lovable-uploads/c278ae84-f54f-4986-8faf-6d272a53e45d.png" 
+                src="/images/logo1.jpg" 
                 alt="Grovvest Academy" 
                 className="h-14 w-14 rounded-full object-cover border-2 border-green-600 group-hover:border-green-700 transition-colors duration-300 shadow-sm"
               />

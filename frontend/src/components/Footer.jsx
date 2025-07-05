@@ -11,9 +11,9 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <img
-                src="/logo.png"
+                src="/images/logo1.jpg"
                 alt="Grovvest Academy Logo"
-                className="h-12 w-auto filter brightness-0 invert"
+                className="h-12 w-12 rounded-full object-cover"
               />
               <span className="text-xl font-bold">Grovvest Academy</span>
             </div>
@@ -47,10 +47,11 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Learning</h3>
             <ul className="space-y-2">
-              <li><Link to="/courses" className="text-gray-400 hover:text-green-400">Mutual Fund Basics</Link></li>
-              <li><Link to="/courses" className="text-gray-400 hover:text-green-400">Investment Strategies</Link></li>
-              <li><Link to="/blog" className="text-gray-400 hover:text-green-400">Market Insights</Link></li>
-              <li><Link to="/premium" className="text-gray-400 hover:text-green-400">Premium Content</Link></li>
+              <li><Link to="/courses" className="text-gray-400 hover:text-green-400">Financial Development</Link></li>
+              <li><Link to="/courses" className="text-gray-400 hover:text-green-400">Stock Market</Link></li>
+              <li><Link to="/blog" className="text-gray-400 hover:text-green-400">Java with Project</Link></li>
+              <li><Link to="/premium" className="text-gray-400 hover:text-green-400">Web Development with Project</Link></li>
+              <li><Link to="/premium" className="text-gray-400 hover:text-green-400">More Courses..</Link></li>
             </ul>
           </div>
 
@@ -60,7 +61,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><Link to="/contact" className="text-gray-400 hover:text-green-400">Contact Us</Link></li>
               <li><Link to="/team" className="text-gray-400 hover:text-green-400">Meet Our Team</Link></li>
-              <li><a href="#" className="text-gray-400 hover:text-green-400">Help Center</a></li>
+              <li><a href="/contact" className="text-gray-400 hover:text-green-400">Help Center</a></li>
               <li><a href="#" className="text-gray-400 hover:text-green-400">Privacy Policy</a></li>
               <li><a href="#" className="text-gray-400 hover:text-green-400">Terms of Service</a></li>
             </ul>
