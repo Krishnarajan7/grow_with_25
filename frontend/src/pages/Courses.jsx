@@ -26,7 +26,7 @@ const Courses = () => {
       level: "intermediate",
       duration: "12 weeks",
       lessons: 45,
-      price: "₹1,199",
+      price: "₹1,999",
       isPremium: true,
       topics: [
         "HTML/CSS/JavaScript",
@@ -44,7 +44,7 @@ const Courses = () => {
       level: "beginner",
       duration: "10 weeks",
       lessons: 40,
-      price: "₹1,199",
+      price: "₹1,999",
       isPremium: true,
       topics: [
         "Java Fundamentals",
@@ -62,7 +62,7 @@ const Courses = () => {
       level: "beginner",
       duration: "6 weeks",
       lessons: 24,
-      price: "₹599",
+      price: "₹25",
       isPremium: true,
       topics: [
         "Market Basics",
