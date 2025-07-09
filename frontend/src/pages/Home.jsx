@@ -108,17 +108,72 @@ const Home = () => {
   ];
 
   const allSkills = [
-    { icon: Code, title: "Web Development", desc: "HTML, CSS, JavaScript, React", category: "tech", progress: 85 },
-    { icon: Laptop, title: "Java Programming", desc: "Core Java to Spring Framework", category: "tech", progress: 78 },
-    { icon: Brain, title: "AI & Machine Learning", desc: "Python, Neural Networks, Deep Learning", category: "tech", progress: 72 },
-    { icon: Zap, title: "Full Stack Development", desc: "End-to-end application development", category: "tech", progress: 88 },
-    { icon: TrendingUp, title: "Stock Market", desc: "Technical analysis, Trading strategies", category: "finance", progress: 82 },
-    { icon: PiggyBank, title: "Mutual Funds", desc: "SIP, Portfolio management", category: "finance", progress: 75 },
-    { icon: BarChart3, title: "Investment Planning", desc: "Risk assessment, Wealth building", category: "finance", progress: 80 },
-    { icon: DollarSign, title: "Financial Literacy", desc: "Budgeting, Tax planning", category: "finance", progress: 77 }
+    { 
+      icon: Code, 
+      title: "Web Development", 
+      desc: "HTML, CSS, JavaScript, React", 
+      category: "tech", 
+      level: "Beginner to Advanced",
+      duration: "12 weeks"
+    },
+    { 
+      icon: Laptop, 
+      title: "Java Programming", 
+      desc: "Core Java to Spring Framework", 
+      category: "tech", 
+      level: "Beginner Friendly",
+      duration: "10 weeks"
+    },
+    { 
+      icon: Brain, 
+      title: "AI & Machine Learning", 
+      desc: "Python, Neural Networks, Deep Learning", 
+      category: "tech", 
+      level: "Advanced Level",
+      duration: "14 weeks"
+    },
+    { 
+      icon: Zap, 
+      title: "Full Stack Development", 
+      desc: "End-to-end application development", 
+      category: "tech", 
+      level: "Intermediate+",
+      duration: "16 weeks"
+    },
+    { 
+      icon: TrendingUp, 
+      title: "Stock Market", 
+      desc: "Technical analysis, Trading strategies", 
+      category: "finance", 
+      level: "Beginner Friendly",
+      duration: "6 weeks"
+    },
+    { 
+      icon: PiggyBank, 
+      title: "Mutual Funds", 
+      desc: "SIP, Portfolio management", 
+      category: "finance", 
+      level: "Beginner Level",
+      duration: "4 weeks"
+    },
+    { 
+      icon: BarChart3, 
+      title: "Investment Planning", 
+      desc: "Risk assessment, Wealth building", 
+      category: "finance", 
+      level: "Intermediate",
+      duration: "8 weeks"
+    },
+    { 
+      icon: DollarSign, 
+      title: "Financial Literacy", 
+      desc: "Budgeting, Tax planning", 
+      category: "finance", 
+      level: "Beginner Level",
+      duration: "2 weeks"
+    }
   ];
 
-  // Live statistics
   const liveStats = [
     { label: "Active Students", value: "2,847", trend: "up", icon: Users },
     { label: "Courses Completed", value: "15,623", trend: "up", icon: BookOpen },
@@ -202,7 +257,7 @@ const Home = () => {
                 </Link> */}
               </div>
 
-              {/* Popular Skills Section - Moved to Left */}
+              {/* Popular Skills Section - Updated with meaningful content */}
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <h3 className="text-2xl font-bold text-gray-900">Popular Skills</h3>
@@ -227,9 +282,9 @@ const Home = () => {
                         <div className="flex-1 min-w-0">
                           <h4 className="font-semibold text-gray-900 group-hover:text-green-700 transition-colors">{skill.title}</h4>
                           <p className="text-sm text-gray-600 mb-2">{skill.desc}</p>
-                          <div className="flex items-center space-x-2">
-                            <Progress value={skill.progress} className="flex-1 h-2" />
-                            <span className="text-sm font-semibold text-green-600">{skill.progress}%</span>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-medium text-gray-500">{skill.level}</span>
+                            <span className="text-xs font-semibold text-green-600">{skill.duration}</span>
                           </div>
                         </div>
                       </div>
@@ -301,7 +356,7 @@ const Home = () => {
                       <h3 className="font-semibold text-gray-900 text-lg">
                         {courseShowcase[currentCourseIndex].category}
                       </h3>
-                      <p className="text-sm text-gray-600">Live Progress</p>
+                      <p className="text-sm text-gray-600">Available Now</p>
                     </div>
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${courseShowcase[currentCourseIndex].bgColor.replace('from-', 'bg-').replace(' to-blue-100', '').replace(' to-purple-100', '').replace(' to-green-100', '')}`}>
                       {React.createElement(courseShowcase[currentCourseIndex].icon, {
@@ -310,21 +365,15 @@ const Home = () => {
                     </div>
                   </div>
                   
-                  {/* Course Progress Animation */}
+                  {/* Course List with Enrollment Info */}
                   <div className="space-y-4">
                     {courseShowcase[currentCourseIndex].courses.map((course, index) => (
                       <div key={course} className="flex justify-between items-center opacity-0 animate-fade-in-up" style={{ animationDelay: `${index * 0.2}s`, animationFillMode: 'forwards' }}>
                         <span className="text-gray-700 text-sm font-medium">{course}</span>
                         <div className="flex items-center space-x-2">
-                          <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div 
-                              className={`h-full bg-gradient-to-r ${courseShowcase[currentCourseIndex].category === 'Technical Courses' ? 'from-green-500 to-green-600' : courseShowcase[currentCourseIndex].category === 'Financial Education' ? 'from-blue-500 to-blue-600' : 'from-purple-500 to-purple-600'} rounded-full transition-all duration-1000`}
-                              style={{ width: `${65 + (index * 10)}%` }}
-                            />
-                          </div>
-                          <span className={`text-sm font-semibold ${courseShowcase[currentCourseIndex].accent}`}>
-                            {65 + (index * 10)}%
-                          </span>
+                          <Badge className={`text-xs ${courseShowcase[currentCourseIndex].category === 'Technical Courses' ? 'bg-green-100 text-green-700' : courseShowcase[currentCourseIndex].category === 'Financial Education' ? 'bg-blue-100 text-blue-700' : 'bg-purple-100 text-purple-700'}`}>
+                            {index === 0 ? 'Most Popular' : index === 1 ? 'New' : 'Trending'}
+                          </Badge>
                         </div>
                       </div>
                     ))}
@@ -336,8 +385,8 @@ const Home = () => {
                       <Trophy className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-gray-900">Live Learning</p>
-                      <p className="text-xs text-gray-600">Join active students</p>
+                      <p className="text-sm font-semibold text-gray-900">Enroll Today</p>
+                      <p className="text-xs text-gray-600">Limited time offers</p>
                     </div>
                   </div>
                 </div>
@@ -463,7 +512,7 @@ const Home = () => {
                 <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-lg opacity-20 blur"></div>
                 <img 
                   src="/images/certify.jpg" 
-                  alt="Grovvest Academy Certificat" 
+                  alt="Grovvest Academy Certificate" 
                   className="relative w-full max-w-lg mx-auto rounded-lg shadow-2xl border-4 border-white/20 transform hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse shadow-lg">
@@ -627,7 +676,7 @@ const Home = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-white text-green-700 hover:bg-white hover:text-green-700 font-medium w-full sm:w-auto"
+                  className="bg-white text-green-700 hover:bg-green-50 hover:text-green-700 font-medium w-full sm:w-auto"
                 >
                   Explore Premium
                 </Button>
