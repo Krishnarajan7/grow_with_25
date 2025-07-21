@@ -131,7 +131,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -142,7 +142,7 @@
 @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-20px);
   }
   to {
     opacity: 1;
@@ -153,11 +153,22 @@
 @keyframes fadeInRight {
   from {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateX(20px);
   }
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -180,15 +191,15 @@
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .animate-fade-in-left {
-  animation: fadeInLeft 0.8s ease-out forwards;
+  animation: fadeInLeft 0.6s ease-out forwards;
 }
 
 .animate-fade-in-right {
-  animation: fadeInRight 0.8s ease-out forwards;
+  animation: fadeInRight 0.6s ease-out forwards;
 }
 
 .animate-float {
@@ -199,12 +210,12 @@
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Enhanced scroll-triggered animations for all pages - Mobile optimized */
+/* Consistent scroll-triggered animations - Ordered timing */
 @media (prefers-reduced-motion: no-preference) {
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.25, 0.4, 0.25, 1);
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.25, 0.4, 0.25, 1);
     animation-fill-mode: both;
   }
   
@@ -215,8 +226,8 @@
   
   .scroll-reveal-left {
     opacity: 0;
-    transform: translateX(-30px);
-    transition: all 0.8s cubic-bezier(0.25, 0.4, 0.25, 1);
+    transform: translateX(-20px);
+    transition: all 0.6s cubic-bezier(0.25, 0.4, 0.25, 1);
     animation-fill-mode: both;
   }
   
@@ -227,8 +238,8 @@
   
   .scroll-reveal-right {
     opacity: 0;
-    transform: translateX(30px);
-    transition: all 0.8s cubic-bezier(0.25, 0.4, 0.25, 1);
+    transform: translateX(20px);
+    transition: all 0.6s cubic-bezier(0.25, 0.4, 0.25, 1);
     animation-fill-mode: both;
   }
   
@@ -239,8 +250,8 @@
   
   .scroll-reveal-scale {
     opacity: 0;
-    transform: scale(0.95);
-    transition: all 0.8s cubic-bezier(0.25, 0.4, 0.25, 1);
+    transform: scale(0.98);
+    transition: all 0.6s cubic-bezier(0.25, 0.4, 0.25, 1);
     animation-fill-mode: both;
   }
   
@@ -249,23 +260,23 @@
     transform: scale(1);
   }
 
-  /* Staggered animations */
-  .scroll-reveal:nth-child(1) { transition-delay: 0.1s; }
-  .scroll-reveal:nth-child(2) { transition-delay: 0.2s; }
-  .scroll-reveal:nth-child(3) { transition-delay: 0.3s; }
-  .scroll-reveal:nth-child(4) { transition-delay: 0.4s; }
-  .scroll-reveal:nth-child(5) { transition-delay: 0.5s; }
-  .scroll-reveal:nth-child(6) { transition-delay: 0.6s; }
+  /* Ordered staggered animations - Fixed timing */
+  .scroll-reveal:nth-child(1) { transition-delay: 0.05s; }
+  .scroll-reveal:nth-child(2) { transition-delay: 0.1s; }
+  .scroll-reveal:nth-child(3) { transition-delay: 0.15s; }
+  .scroll-reveal:nth-child(4) { transition-delay: 0.2s; }
+  .scroll-reveal:nth-child(5) { transition-delay: 0.25s; }
+  .scroll-reveal:nth-child(6) { transition-delay: 0.3s; }
+  .scroll-reveal:nth-child(7) { transition-delay: 0.35s; }
+  .scroll-reveal:nth-child(8) { transition-delay: 0.4s; }
 
-  /* Reduced motion for mobile devices */
-  @media (max-width: 768px) {
-    .scroll-reveal,
-    .scroll-reveal-left,
-    .scroll-reveal-right,
-    .scroll-reveal-scale {
-      transition-duration: 0.6s;
-    }
-  }
+  /* For grid items - consistent timing */
+  .scroll-reveal-grid:nth-child(1) { transition-delay: 0.1s; }
+  .scroll-reveal-grid:nth-child(2) { transition-delay: 0.2s; }
+  .scroll-reveal-grid:nth-child(3) { transition-delay: 0.3s; }
+  .scroll-reveal-grid:nth-child(4) { transition-delay: 0.4s; }
+  .scroll-reveal-grid:nth-child(5) { transition-delay: 0.5s; }
+  .scroll-reveal-grid:nth-child(6) { transition-delay: 0.6s; }
 }
 
 /* Mobile navbar improvements */
@@ -386,6 +397,14 @@ button, .btn-primary, .btn-secondary, .btn-outline {
   .btn-secondary,
   .btn-outline {
     @apply text-sm px-4 py-2;
+  }
+  
+  /* Faster animations on mobile */
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .scroll-reveal-scale {
+    transition-duration: 0.4s;
   }
 }
 
