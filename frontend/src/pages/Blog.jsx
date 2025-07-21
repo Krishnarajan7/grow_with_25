@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Calendar, User, BookOpen, Search } from 'lucide-react';
+import { Calendar, User, BookOpen, Search, ExternalLink, RefreshCw } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { NewsService } from '@/services/newsService';
+import { useToast } from '@/components/ui/use-toast';
 
 const Blog = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
 
   const categories = [
     { id: 'all', name: 'All Posts' },
@@ -18,73 +22,34 @@ const Blog = () => {
     { id: 'news', name: 'Financial News' },
   ];
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: '10 Best Mutual Funds for Beginners in 2024',
-      excerpt: 'Discover the top mutual funds perfect for newcomers to investing, with detailed analysis of risk and returns.',
-      author: 'Priya Sharma',
-      date: '2024-01-15',
-      category: 'investing',
-      readTime: '8 min read',
-      featured: true,
-    },
-    {
-      id: 2,
-      title: 'SIP vs Lump Sum: Which Investment Strategy Works Better?',
-      excerpt: 'A comprehensive comparison of systematic investment plans versus lump sum investments with real examples.',
-      author: 'Rajesh Kumar',
-      date: '2024-01-12',
-      category: 'tips',
-      readTime: '6 min read',
-      featured: false,
-    },
-    {
-      id: 3,
-      title: 'Understanding Market Volatility: A Beginner\'s Guide',
-      excerpt: 'Learn how market fluctuations affect your mutual fund investments and strategies to navigate volatility.',
-      author: 'Anita Desai',
-      date: '2024-01-10',
-      category: 'market-analysis',
-      readTime: '10 min read',
-      featured: true,
-    },
-    {
-      id: 4,
-      title: 'Tax Benefits of ELSS Mutual Funds Explained',
-      excerpt: 'Maximize your tax savings with Equity Linked Savings Schemes while building long-term wealth.',
-      author: 'Vikram Singh',
-      date: '2024-01-08',
-      category: 'investing',
-      readTime: '7 min read',
-      featured: false,
-    },
-    {
-      id: 5,
-      title: 'How to Build a Balanced Portfolio for Retirement',
-      excerpt: 'Strategic portfolio construction tips for securing your retirement with mutual fund investments.',
-      author: 'Meera Patel',
-      date: '2024-01-05',
-      category: 'tips',
-      readTime: '12 min read',
-      featured: false,
-    },
-    {
-      id: 6,
-      title: 'RBI Policy Impact on Mutual Fund Performance',
-      excerpt: 'Analyzing how recent monetary policy changes affect different categories of mutual funds.',
-      author: 'Arjun Mehta',
-      date: '2024-01-03',
-      category: 'news',
-      readTime: '5 min read',
-      featured: false,
-    },
-  ];
+  const fetchLatestNews = async () => {
+    setLoading(true);
+    try {
+      const news = await NewsService.fetchFinancialNews();
+      setBlogPosts(news);
+      toast({
+        title: 'Success',
+        description: 'Latest financial news loaded successfully!',
+      });
+    } catch (error) {
+      console.error('Error fetching news:', error);
+      toast({
+        title: 'Info',
+        description: 'Showing curated financial content',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLatestNews();
+  }, []);
 
   const filteredPosts = blogPosts.filter((post) => {
     const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+      post.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -102,23 +67,34 @@ const Blog = () => {
     return colors[category] || 'bg-gray-100 text-gray-800';
   };
 
+  const getFallbackImage = (category) => {
+    const images = {
+      investing: '/assets/investing.jpg',
+      'market-analysis': '/assets/market.jpg',
+      tips: '/assets/tips.jpg',
+      news: '/assets/news.jpg',
+    };
+    return images[category] || '/assets/default.jpg';
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
       <div className="section-padding py-16">
         <div className="container-width">
+
           {/* Header */}
-          <div className="text-center mb-12 scroll-reveal">
+          <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Financial Insights & Tips
+              Financial Insights & Latest News
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Stay updated with the latest investment strategies, market analysis,
-              and expert insights to grow your wealth.
+              and expert insights from trusted financial sources.
             </p>
           </div>
 
-          {/* Search and Filter */}
-          <div className="flex flex-col md:flex-row gap-4 mb-12 scroll-reveal">
+          {/* Search and Filters */}
+          <div className="flex flex-col md:flex-row gap-4 mb-12">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <Input
@@ -136,42 +112,53 @@ const Blog = () => {
                   variant={selectedCategory === category.id ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setSelectedCategory(category.id)}
-                  className={selectedCategory === category.id ? 'btn-primary' : 'btn-outline'}
                 >
                   {category.name}
                 </Button>
               ))}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={fetchLatestNews}
+                disabled={loading}
+                className="flex items-center gap-2"
+              >
+                <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+                Refresh
+              </Button>
             </div>
           </div>
 
           {/* Featured Posts */}
           {featuredPosts.length > 0 && (
             <div className="mb-16">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8 scroll-reveal">
-                Featured Articles
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Articles</h2>
               <div className="grid lg:grid-cols-2 gap-8">
-                {featuredPosts.map((post, index) => (
-                  <Card
-                    key={post.id}
-                    className="hover:shadow-lg transition-shadow overflow-hidden scroll-reveal"
-                  >
-                    <div className="aspect-video bg-gradient-to-r from-green-100 to-blue-100 flex items-center justify-center">
-                      <BookOpen size={48} className="text-green-600" />
+                {featuredPosts.map((post) => (
+                  <Card key={post.id} className="hover:shadow-lg transition-shadow">
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={post.image || getFallbackImage(post.category)}
+                        alt={post.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <CardHeader>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge className={getCategoryColor(post.category)}>
-                          {categories.find((cat) => cat.id === post.category)?.name}
-                        </Badge>
-                        <span className="text-sm text-gray-500">{post.readTime}</span>
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                          <Badge className={getCategoryColor(post.category)}>
+                            {categories.find(cat => cat.id === post.category)?.name}
+                          </Badge>
+                          <span className="text-sm text-gray-500">{post.readTime}</span>
+                        </div>
                       </div>
-                      <CardTitle className="text-xl hover:text-primary">
-                        <Link to={`/blog/${post.id}`}>{post.title}</Link>
+                      <CardTitle className="text-xl">
+                        {post.title}
                       </CardTitle>
+                      <p className="text-sm text-gray-500">Source: {post.source}</p>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                      <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
                       <div className="flex items-center justify-between text-sm text-gray-500">
                         <div className="flex items-center">
                           <User size={16} className="mr-1" />
@@ -182,6 +169,16 @@ const Blog = () => {
                           {new Date(post.date).toLocaleDateString()}
                         </div>
                       </div>
+                      {post.url && (
+                        <Button
+                          size="sm"
+                          variant="link"
+                          className="mt-2 text-blue-600 hover:underline"
+                          onClick={() => window.open(post.url, '_blank')}
+                        >
+                          Read Full Article <ExternalLink size={14} className="ml-1" />
+                        </Button>
+                      )}
                     </CardContent>
                   </Card>
                 ))}
@@ -191,31 +188,31 @@ const Blog = () => {
 
           {/* Regular Posts */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 scroll-reveal">
-              Latest Articles
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">Latest Articles</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {regularPosts.map((post, index) => (
-                <Card
-                  key={post.id}
-                  className="hover:shadow-lg transition-shadow scroll-reveal"
-                >
+              {regularPosts.map((post) => (
+                <Card key={post.id} className="hover:shadow-lg transition-shadow">
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={post.image || getFallbackImage(post.category)}
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <CardHeader>
-                    <div className="aspect-video bg-gradient-to-r from-green-100 to-blue-100 flex items-center justify-center rounded-lg mb-4">
-                      <BookOpen size={32} className="text-green-600" />
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <Badge className={getCategoryColor(post.category)}>
+                          {categories.find(cat => cat.id === post.category)?.name}
+                        </Badge>
+                        <span className="text-sm text-gray-500">{post.readTime}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Badge className={getCategoryColor(post.category)}>
-                        {categories.find((cat) => cat.id === post.category)?.name}
-                      </Badge>
-                      <span className="text-sm text-gray-500">{post.readTime}</span>
-                    </div>
-                    <CardTitle className="text-lg hover:text-primary">
-                      <Link to={`/blog/${post.id}`}>{post.title}</Link>
-                    </CardTitle>
+                    <CardTitle className="text-lg">{post.title}</CardTitle>
+                    <p className="text-xs text-gray-500">Source: {post.source}</p>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-gray-600 mb-4 text-sm">{post.excerpt}</p>
+                    <p className="text-gray-600 mb-4 text-sm line-clamp-3">{post.excerpt}</p>
                     <div className="flex items-center justify-between text-sm text-gray-500">
                       <div className="flex items-center">
                         <User size={14} className="mr-1" />
@@ -226,34 +223,22 @@ const Blog = () => {
                         {new Date(post.date).toLocaleDateString()}
                       </div>
                     </div>
+                    {post.url && (
+                      <Button
+                        size="sm"
+                        variant="link"
+                        className="mt-2 text-blue-600 hover:underline"
+                        onClick={() => window.open(post.url, '_blank')}
+                      >
+                        Read Full Article <ExternalLink size={14} className="ml-1" />
+                      </Button>
+                    )}
                   </CardContent>
                 </Card>
               ))}
             </div>
           </div>
 
-          {/* Newsletter Signup */}
-          <div className="mt-16 scroll-reveal">
-            <div className="bg-gradient-to-r from-green-600 to-green-400 rounded-2xl p-8 text-white text-center">
-              <h2 className="text-3xl font-bold mb-4">
-                Stay Ahead with Expert Insights
-              </h2>
-              <p className="text-xl text-green-100 mb-6 max-w-2xl mx-auto">
-                Get weekly investment tips, market analysis, and exclusive content
-                delivered to your inbox.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="bg-white text-gray-900"
-                />
-                <Button variant="secondary" className="bg-white text-green-600 hover:bg-gray-100">
-                  Subscribe
-                </Button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

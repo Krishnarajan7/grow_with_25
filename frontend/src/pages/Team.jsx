@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Linkedin, Users } from "lucide-react";
+import { Mail, Linkedin, Users, Phone } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Team = () => {
@@ -8,49 +8,49 @@ const Team = () => {
       name: "Hathikur Rahman",
       role: "CEO & Student Supportive Execute",
       photo: "/images/hathi.jpg",
-      // description: "With over 15 years in financial markets, Rajesh founded Grovvest Academy to democratize investment education. Former investment banker turned educator.",
       email: "rajesh@grovvestacademy.com",
       linkedin: "linkedin.com/in/rajeshkumar",
+      phone: "+91 7418991909",
     },
     {
       name: "Abubakkersiddiq",
       role: "Founder & Course Trainer",
       photo: "/images/abu.jpg",
-      // description: "Priya designs our comprehensive curriculum with 12+ years in financial education. She ensures complex concepts are simplified for beginners.",
       email: "Abubakkarsiddiq0076@gmail.com",
       linkedin: "linkedin.com/in/priyasharma",
+      phone: "+91 9445238959",
     },
     {
       name: "Madesh",
       role: "Marketing Head, Co-Founder & Promotion Head",
       photo: "/images/madhes.jpg",
-      // description: "Certified Financial Planner with expertise in mutual funds and SIP strategies. Amit has helped thousands of investors achieve their financial goals.",
       email: "madhesh6112004@gmail.com",
       linkedin: "linkedin.com/in/amitpatel",
+      phone: "+91 6380866922",
     },
     {
       name: "Hariharan",
       role: "Enrollment Manager & Graphic Designer",
       photo: "/images/hari.jpg",
-      // description: "Neha brings deep market insights and research expertise. She tracks market trends and helps create data-driven investment strategies for our students.",
       email: "hariharansenthilkumar31@gmail.com",
       linkedin: "linkedin.com/in/nehasingh",
+      phone: "+91 8870838606",
     },
     {
       name: "Abdul Bashith",
       role: "Financial Manager",
       photo: "/images/bashi.jpg",
-      // description: "Vikram ensures our platform runs smoothly and develops innovative tools for better learning experiences. Tech enthusiast with fintech expertise.",
       email: "vikram@grovvestacademy.com",
       linkedin: "linkedin.com/in/vikrammehta",
+      phone: "+91 93615 85175",
     },
     {
       name: "Usman",
       role: "Social Media Lead & Operation Manager",
       photo: "/images/usman.jpg",
-      // description: "Vikram ensures our platform runs smoothly and develops innovative tools for better learning experiences. Tech enthusiast with fintech expertise.",
       email: "ffabuloususman@gmail.com",
       linkedin: "linkedin.com/in/vikrammehta",
+      phone: "+91 9677047408",
     },
   ];
 
@@ -116,12 +116,10 @@ const Team = () => {
                     <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-green-700 transition-colors duration-300">
                       {member.name}
                     </h3>
-                    <p className="text-green-600 font-medium mb-3">
+                    <p className="text-green-600 font-medium mb-1">
                       {member.role}
                     </p>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {member.description}
-                    </p>
+                    <p className="text-gray-500 text-sm">{member.phone}</p>
                   </div>
 
                   <div className="flex justify-center space-x-4 pt-4 border-t border-gray-100">
@@ -138,6 +136,12 @@ const Team = () => {
                       className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full text-green-700 hover:bg-green-200 transition-colors duration-300"
                     >
                       <Linkedin size={16} />
+                    </a>
+                    <a
+                      href={`tel:${member.phone}`}
+                      className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full text-green-700 hover:bg-green-200 transition-colors duration-300"
+                    >
+                      <Phone size={16} />
                     </a>
                   </div>
                 </CardContent>

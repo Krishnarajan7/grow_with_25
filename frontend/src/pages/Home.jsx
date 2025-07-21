@@ -96,8 +96,8 @@ const Home = () => {
   ];
 
   const stats = [
-    { label: "Technical Courses", value: "6+" },
-    { label: "Happy Learners", value: "10K+" },
+    { label: "Technical Courses", value: "50+" },
+    { label: "Happy Learners", value: "250+" },
     { label: "Years of Experience", value: "5+" },
   ];
 
@@ -175,8 +175,8 @@ const Home = () => {
   ];
 
   const liveStats = [
-    { label: "Active Students", value: "2,847", trend: "up", icon: Users },
-    { label: "Courses Completed", value: "15,623", trend: "up", icon: BookOpen },
+    { label: "Active Students", value: "250+", trend: "up", icon: Users },
+    { label: "Courses Completed", value: "50+", trend: "up", icon: BookOpen },
     { label: "Success Rate", value: "94%", trend: "stable", icon: Trophy },
     { label: "Average Rating", value: "4.8", trend: "up", icon: Star }
   ];

@@ -217,7 +217,7 @@ const Contact = () => {
                       <MapPin className="mr-2 flex-shrink-0" size={16} />
                       <div>
                         <p className="text-sm font-medium">Location</p>
-                        <p className="text-green-100 text-sm">Chennai, Tamil Nadu</p>
+                        <p className="text-green-100 text-sm">A7b Hajiyar Street, Lalpet (Post), Cuddalore Dt</p>
                       </div>
                     </div>
                     <div className="flex items-center">
