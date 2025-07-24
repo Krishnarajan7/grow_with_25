@@ -84,12 +84,12 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: "Priya Sharma",
+      name: "Krishnarajan",
       title: "Software Engineer",
       quote: "Grovvest Academy helped me transition into tech with their comprehensive Full Stack course. The projects were amazing!",
     },
     {
-      name: "Amit Patel",
+      name: "Maheswaran",
       title: "Java Developer",
       quote: "I was new to programming, but Grovvest Academy made Java simple and accessible. Now I'm working at a top tech company.",
     },
