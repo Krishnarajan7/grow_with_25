@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -6,8 +5,8 @@ export const useScrollAnimation = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Scroll to top when route changes
-    window.scrollTo(0, 0);
+    // Smooth scroll to top when route changes
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location.pathname]);
 
   useEffect(() => {
@@ -15,39 +14,52 @@ export const useScrollAnimation = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-        } else {
-          // Remove visible class when element goes out of view (for re-triggering)
-          entry.target.classList.remove('visible');
+          
+          // Add stagger animation for child elements
+          const children = entry.target.querySelectorAll('.stagger-children > *');
+          children.forEach((child, index) => {
+            setTimeout(() => {
+              child.classList.add('visible');
+            }, index * 100);
+          });
         }
       });
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.15,
+      threshold: 0.1,
       rootMargin: '0px 0px -30px 0px'
     });
 
     const observeElements = () => {
-      // Clear any existing observations
-      observer.disconnect();
-      
       // Find all elements that should have scroll animations
-      const scrollElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+      const scrollElements = document.querySelectorAll(
+        '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .scroll-reveal-up'
+      );
       
-      // Reset all elements to initial state and add staggered delays
-      scrollElements.forEach((el, index) => {
-        el.classList.remove('visible');
-        
-        // Add staggered delay based on order in DOM
-        const delay = Math.floor(index / 3) * 0.1; // Group every 3 elements
-        (el).style.transitionDelay = `${delay}s`;
-        
-        observer.observe(el);
+      scrollElements.forEach((el) => {
+        // Only add observer if element doesn't already have visible class
+        if (!el.classList.contains('visible')) {
+          observer.observe(el);
+        }
       });
+
+      // Add parallax effect to hero sections
+      const heroElements = document.querySelectorAll('.hero-parallax');
+      const handleScroll = () => {
+        const scrolled = window.pageYOffset;
+        heroElements.forEach((el) => {
+          const rate = scrolled * -0.5;
+          (el).style.transform = `translateY(${rate}px)`;
+        });
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
     };
 
-    // Initial observation after DOM is ready
-    const timeoutId = setTimeout(observeElements, 100);
+    // Delay to ensure DOM is ready
+    const timeoutId = setTimeout(observeElements, 50);
 
     return () => {
       observer.disconnect();
