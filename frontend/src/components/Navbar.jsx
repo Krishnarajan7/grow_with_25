@@ -21,18 +21,6 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Block scrolling while open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Courses", href: "/courses" },
@@ -49,19 +37,18 @@ const Navbar = () => {
         scrolled ? "bg-white/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="container-width section-padding">
-        <div className="flex items-center justify-between h-24">
-          {/* Logo */}
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between py-3 sm:py-4">
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
               <img
-                src="../images/logo1.jpg"
+                src="/images/logo.jpg"
                 alt="Grovvest Academy"
-                className="h-20 w-20 rounded-full object-cover border-2 border-green-600 group-hover:border-green-700 transition-colors duration-300 shadow-sm"
+                className="h-16 w-16 sm:h-20 sm:w-20 rounded-full object-cover border-2 border-green-600 group-hover:border-green-700 transition-colors duration-300 shadow-sm"
               />
             </div>
             <span
-              className={`text-2xl font-bold transition-colors duration-300 ${
+              className={`text-xl sm:text-2xl font-bold transition-colors duration-300 ${
                 scrolled ? "text-gray-900" : "text-gray-900"
               } group-hover:text-green-700`}
             >
