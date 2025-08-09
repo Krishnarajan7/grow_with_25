@@ -209,7 +209,7 @@ const Contact = () => {
                       <div>
                         <p className="text-sm font-medium">Email</p>
                         <a href="mailto:Growwithrs25@gmail.com" className="text-green-100 hover:text-white text-sm">
-                          Growwithrs25@gmail.com
+                          Growvestacademy@gmail.com
                         </a>
                       </div>
                     </div>
@@ -217,7 +217,7 @@ const Contact = () => {
                       <MapPin className="mr-2 flex-shrink-0" size={16} />
                       <div>
                         <p className="text-sm font-medium">Location</p>
-                        <p className="text-green-100 text-sm">A7b Hajiyar Street, Lalpet (Post), Cuddalore Dt</p>
+                        <p className="text-green-100 text-sm">177/1 rahamaniya street Lalpet</p>
                       </div>
                     </div>
                     <div className="flex items-center">

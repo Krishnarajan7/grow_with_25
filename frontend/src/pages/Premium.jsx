@@ -30,7 +30,7 @@ const Premium = () => {
     },
     {
       name: 'Premium Monthly',
-      price: '₹999',
+      price: '₹1999',
       period: 'per month',
       description: 'Comprehensive learning with all premium features',
       features: [
@@ -50,7 +50,7 @@ const Premium = () => {
     },
     {
       name: 'Premium Annual',
-      price: '₹9,999',
+      price: '₹2,999',
       period: 'per year',
       originalPrice: '₹11,988',
       savings: 'Save ₹1,989',
@@ -67,7 +67,7 @@ const Premium = () => {
         'Lifetime course updates'
       ],
       notIncluded: [],
-      recommended: false,
+      recommended: true,
       buttonText: 'Get Annual Plan'
     }
   ];
