@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 const Team = () => {
   const teamMembers = [
     {
-      name: "Hathikur Rahman",
+      name: "Hathikur Rahman H",
       role: "CEO & Student Supportive Executive",
       photo: "/images/hathi.jpg",
       email: "rajesh@grovvestacademy.com",

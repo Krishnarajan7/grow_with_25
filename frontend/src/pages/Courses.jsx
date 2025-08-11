@@ -217,9 +217,27 @@ const Courses = () => {
         "Reading & Writing",
       ],
     },
+    {
+      id: 11,
+      title: "Advanced English Mastery with Project",
+      description:
+        "Enhance your English proficiency through in-depth lessons, advanced grammar, and practical project-based learning.",
+      level: "beginner",
+      duration: "6 weeks",
+      lessons: 20,
+      price: "₹499",
+      isPremium: true,
+      image:
+        "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80",
+      topics: [
+        "Advanced Grammar",
+        "Vocabulary Expansion",
+        "Essay & Report Writing",
+        "Public Speaking & Presentation Skills",
+        "English Project Development",
+      ],
+    },
   ];
-
-  // ... keep existing code (filteredCourses, handleCategoryChange, useEffect, and getLevelColor functions)
 
   // Filter courses based on selected category
   const filteredCourses =
@@ -266,7 +284,6 @@ const Courses = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
       <div className="section-padding py-16">
         <div className="container-width">
-          {/* ... keep existing code (Header section) */}
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Master New Skills with Expert Courses
@@ -277,7 +294,6 @@ const Courses = () => {
             </p>
           </div>
 
-          {/* ... keep existing code (Category Filter section) */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {categories.map((category) => (
               <Button
@@ -296,8 +312,6 @@ const Courses = () => {
               </Button>
             ))}
           </div>
-
-          {/* ... keep existing code (Courses Grid and Bottom CTA sections) */}
           <div
             className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 transition-opacity duration-300 ${
               isAnimating ? "opacity-50" : "opacity-100"
@@ -371,7 +385,7 @@ const Courses = () => {
                           ))}
                         </div>
                       </div>
-                      import {toast} from "sonner";
+
                       {/* Price and CTA */}
                       <div className="pt-4 border-t">
                         <div className="flex justify-between items-center">
