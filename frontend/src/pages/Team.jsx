@@ -192,7 +192,7 @@ const Team = () => {
             difference in financial education.
           </p>
           <a
-            href="mailto:careers@grovvestacademy.com"
+            href="mailto:careers@growvestacademy@gmail.com"
             className="inline-flex items-center px-6 py-3 bg-white text-green-700 font-medium rounded-lg hover:bg-green-50 transition"
           >
             <Mail className="mr-2 w-5 h-5" />

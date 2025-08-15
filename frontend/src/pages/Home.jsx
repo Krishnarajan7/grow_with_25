@@ -45,12 +45,12 @@ const Home = () => {
     {
       name: "Priya Sharma",
       title: "Software Engineer",
-      quote: "Grovvest Academy helped me transition into tech with their comprehensive Full Stack course. The projects were amazing!",
+      quote: "Growvest Academy helped me transition into tech with their comprehensive Full Stack course. The projects were amazing!",
     },
     {
       name: "Amit Patel",
       title: "Java Developer",
-      quote: "I was new to programming, but Grovvest Academy made Java simple and accessible. Now I'm working at a top tech company.",
+      quote: "I was new to programming, but Growvest Academy made Java simple and accessible. Now I'm working at a top tech company.",
     },
   ];
 
@@ -61,7 +61,7 @@ const Home = () => {
   ];
 
   const certificateFeatures = [
-    { icon: CheckCircle, text: "Official Grovvest Academy Certificate" },
+    { icon: CheckCircle, text: "Official Growvest Academy Certificate" },
     { icon: Download, text: "Downloadable PDF format" },
     { icon: Share2, text: "LinkedIn profile ready" },
   ];
@@ -143,7 +143,7 @@ const Home = () => {
                 <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-lg opacity-20 blur"></div>
                 <img 
                   src="/images/certify.jpg" 
-                  alt="Grovvest Academy Certificate" 
+                  alt="Growvest Academy Certificate" 
                   className="relative w-full max-w-lg mx-auto rounded-lg shadow-2xl border-4 border-white/20 transform hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse shadow-lg">
@@ -160,7 +160,7 @@ const Home = () => {
         <div className="container-width section-padding">
           <div className="text-center mb-16 scroll-reveal-up">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="bg-gradient-to-r from-green-600 to-green-600 bg-clip-text text-transparent">Grovvest Academy</span>?
+              Why Choose <span className="bg-gradient-to-r from-green-600 to-green-600 bg-clip-text text-transparent">Growvest Academy</span>?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Comprehensive education in technology and finance designed for modern professionals
@@ -291,7 +291,7 @@ const Home = () => {
               Ready to Transform Your Future?
             </h2>
             <p className="text-xl mb-8 text-green-100">
-              Join thousands of successful professionals who advanced their careers with Grovvest Academy
+              Join thousands of successful professionals who advanced their careers with Growvest Academy
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/courses">

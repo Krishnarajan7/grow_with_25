@@ -43,7 +43,7 @@ const Navbar = () => {
             <div className="relative">
               <img
                 src="/images/logo.jpg"
-                alt="Grovvest Academy"
+                alt="Growvest Academy"
                 className="h-16 w-16 sm:h-20 sm:w-20 rounded-full object-cover border-2 border-green-600 group-hover:border-green-700 transition-colors duration-300 shadow-sm"
               />
             </div>
@@ -52,7 +52,7 @@ const Navbar = () => {
                 scrolled ? "text-gray-900" : "text-gray-900"
               } group-hover:text-green-700`}
             >
-              Grovvest Academy
+              Growvest Academy
             </span>
           </Link>
 

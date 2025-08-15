@@ -12,10 +12,10 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-4">
               <img
                 src="/images/logo1.jpg"
-                alt="Grovvest Academy Logo"
+                alt="Growvest Academy Logo"
                 className="h-12 w-12 rounded-full object-cover"
               />
-              <span className="text-xl font-bold">Grovvest Academy</span>
+              <span className="text-xl font-bold">Growvest Academy</span>
             </div>
             <p className="text-gray-400 mb-4 max-w-md">
               Empowering beginners to make smart investment decisions through comprehensive 
@@ -70,7 +70,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © {new Date().getFullYear()} Grovvest Academy. All rights reserved. Empowering financial growth through education.
+            © {new Date().getFullYear()} Growvest Academy. All rights reserved. Empowering financial growth through education.
           </p>
           <p className="text-gray-500 text-sm mt-2">
             Investment education • Mutual Fund Guidance • Personal Finance Growth
