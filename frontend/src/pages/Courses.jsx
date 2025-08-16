@@ -25,7 +25,7 @@ const Courses = () => {
       level: "intermediate",
       duration: "12 weeks",
       lessons: 45,
-      price: "₹1,199",
+      price: "₹1,999",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
@@ -45,7 +45,7 @@ const Courses = () => {
       level: "beginner",
       duration: "10 weeks",
       lessons: 40,
-      price: "₹1,199",
+      price: "₹1,999",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80",
@@ -65,7 +65,7 @@ const Courses = () => {
       level: "beginner",
       duration: "6 weeks",
       lessons: 24,
-      price: "₹599",
+      price: "₹1,999",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80",
@@ -85,7 +85,7 @@ const Courses = () => {
       level: "beginner",
       duration: "2 weeks",
       lessons: 8,
-      price: "₹99",
+      price: "₹199",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
@@ -105,7 +105,7 @@ const Courses = () => {
       level: "advanced",
       duration: "14 weeks",
       lessons: 50,
-      price: "₹1,199",
+      price: "₹1,999",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
@@ -125,7 +125,7 @@ const Courses = () => {
       level: "beginner",
       duration: "8 weeks",
       lessons: 32,
-      price: "₹499",
+      price: "₹1,999",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
@@ -208,7 +208,7 @@ const Courses = () => {
       price: "₹499",
       isPremium: true,
       image:
-        "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80",
+        "/images/hindi.jpg",
       topics: [
         "Hindi Alphabet",
         "Basic Grammar",
@@ -228,13 +228,33 @@ const Courses = () => {
       price: "₹499",
       isPremium: true,
       image:
-        "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80",
+        "/images/english.jpeg",
       topics: [
         "Advanced Grammar",
         "Vocabulary Expansion",
         "Essay & Report Writing",
         "Public Speaking & Presentation Skills",
         "English Project Development",
+      ],
+    },
+    {
+      id: 12,
+      title: "Arabic",
+      description:
+        "Learn Arabic language fundamentals including reading, writing, and conversational skills.",
+      level: "beginner",
+      duration: "8 weeks",
+      lessons: 28,
+      price: "₹499",
+      isPremium: true,
+      image:
+        "/images/arabic.jpeg",
+      topics: [
+        "Arabic Alphabet",
+        "Basic Grammar",
+        "Vocabulary Building",
+        "Conversation Skills",
+        "Reading & Writing",
       ],
     },
   ];

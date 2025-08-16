@@ -1,99 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import { TrendingUp, TrendingDown, BarChart3 } from 'lucide-react';
+import { Lightbulb, Sparkles, Quote } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const StockMarketTicker = () => {
-  const [marketData, setMarketData] = useState([
-    { symbol: "NIFTY 50", name: "Nifty 50", price: "21,456.30", change: "+245.80", percentage: "+1.16%", status: "up" },
-    { symbol: "SENSEX", name: "BSE Sensex", price: "70,825.40", change: "+512.25", percentage: "+0.73%", status: "up" },
-    { symbol: "BANKNIFTY", name: "Bank Nifty", price: "46,234.15", change: "-123.45", percentage: "-0.27%", status: "down" },
-    { symbol: "GOLD", name: "Gold", price: "₹62,450", change: "+340", percentage: "+0.55%", status: "up" },
-    { symbol: "SILVER", name: "Silver", price: "₹74,250", change: "-180", percentage: "-0.24%", status: "down" },
-    { symbol: "USDINR", name: "USD/INR", price: "83.15", change: "+0.05", percentage: "+0.06%", status: "up" },
-  ]);
+  const [currentFact, setCurrentFact] = useState(0);
 
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const funFacts = [
+    { type: "fact", text: "Did you know? Honey never spoils. Archaeologists have found edible honey in ancient Egyptian tombs." },
+    { type: "quote", text: "“The best way to get started is to quit talking and begin doing.” – Walt Disney" },
+    { type: "fact", text: "Bananas are berries, but strawberries are not!" },
+    { type: "quote", text: "“Success usually comes to those who are too busy to be looking for it.” – Henry David Thoreau" },
+    { type: "fact", text: "Octopuses have three hearts and blue blood." },
+    { type: "quote", text: "“Don’t let yesterday take up too much of today.” – Will Rogers" }
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentTime(new Date());
-
-      setMarketData(prevData =>
-        prevData.map(item => {
-          const randomChange = (Math.random() - 0.5) * 0.02;
-          const basePrice = parseFloat(item.price.replace(/[₹,]/g, ''));
-          const newPrice = basePrice + basePrice * randomChange;
-          const changeValue = newPrice - basePrice;
-          const changePercentage = (changeValue / basePrice) * 100;
-
-          return {
-            ...item,
-            price:
-              item.symbol === 'GOLD' || item.symbol === 'SILVER'
-                ? `₹${newPrice.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
-                : newPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-            change: changeValue >= 0 ? `+${Math.abs(changeValue).toFixed(2)}` : `-${Math.abs(changeValue).toFixed(2)}`,
-            percentage: changeValue >= 0 ? `+${changePercentage.toFixed(2)}%` : `${changePercentage.toFixed(2)}%`,
-            status: changeValue >= 0 ? 'up' : 'down'
-          };
-        })
-      );
-    }, 10000);
+      setCurrentFact((prev) => (prev + 1) % funFacts.length);
+    }, 8000);
 
     return () => clearInterval(timer);
   }, []);
-
-  const formatTime = (date) => {
-    return date.toLocaleTimeString('en-IN', {
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      timeZone: 'Asia/Kolkata'
-    });
-  };
 
   return (
     <div className="bg-gray-900 text-white py-6 border-t border-gray-800">
       <div className="container-width section-padding">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-3">
-            <BarChart3 className="w-6 h-6 text-yellow-400" />
-            <h3 className="text-lg font-semibold">Live Market Updates</h3>
+            <Sparkles className="w-6 h-6 text-yellow-400" />
+            <h3 className="text-lg font-semibold">Daily Insights</h3>
           </div>
           <div className="text-sm text-gray-400">
-            Last Updated: {formatTime(currentTime)} IST
+            Auto-refreshes every 8 seconds ✨
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {marketData.map((item, index) => (
-            <Card key={index} className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-colors">
-              <CardContent className="p-4">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-medium text-sm text-gray-200">{item.symbol}</h4>
-                    {item.status === 'up' ? (
-                      <TrendingUp className="w-4 h-4 text-green-400" />
-                    ) : (
-                      <TrendingDown className="w-4 h-4 text-red-400" />
-                    )}
-                  </div>
-                  <div className="text-lg font-bold text-white">{item.price}</div>
-                  <div className={`flex items-center space-x-1 text-sm ${
-                    item.status === 'up' ? 'text-green-400' : 'text-red-400'
-                  }`}>
-                    <span>{item.change}</span>
-                    <span>({item.percentage})</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <Card className="bg-gray-800 border-gray-700 hover:bg-gray-750 transition-colors">
+          <CardContent className="p-6">
+            <div className="flex items-start space-x-3">
+              {funFacts[currentFact].type === "fact" ? (
+                <Lightbulb className="w-6 h-6 text-yellow-400 flex-shrink-0" />
+              ) : (
+                <Quote className="w-6 h-6 text-blue-400 flex-shrink-0" />
+              )}
+              <p className="text-lg text-gray-200">{funFacts[currentFact].text}</p>
+            </div>
+          </CardContent>
+        </Card>
 
         <div className="mt-4 text-center">
           <p className="text-xs text-gray-500">
-            Market data is simulated for demonstration purposes. For real trading decisions, please consult official sources.
+            Content is shown for engagement purposes only — refreshed automatically.
           </p>
         </div>
       </div>
