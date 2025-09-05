@@ -21,7 +21,7 @@ const HeroCarousel = () => {
       title: "Full Stack Development",
       description:
         "Master modern web development with React, Node.js, and databases",
-      price: "₹1,199",
+      price: "₹1,999",
       duration: "16 weeks",
       students: "2,847",
       rating: "4.8",

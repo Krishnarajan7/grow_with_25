@@ -4,6 +4,7 @@ import path from "path";
 import Sitemap from "vite-plugin-sitemap"; 
 
 export default defineConfig({
+  base: "/", 
   server: {
     host: "::",
     port: 8080,
@@ -11,12 +12,16 @@ export default defineConfig({
   plugins: [
     react(),
     Sitemap({
-      hostname: "https://growvestaca.in", 
+      hostname: "https://growvestaca.in",
     }),
   ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    outDir: "dist",  
+    emptyOutDir: true,
   },
 });
