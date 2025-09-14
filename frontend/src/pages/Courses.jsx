@@ -26,6 +26,7 @@ const Courses = () => {
       duration: "12 weeks",
       lessons: 45,
       price: "₹1,999",
+      originalPrice: "₹5,000",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
@@ -46,6 +47,7 @@ const Courses = () => {
       duration: "10 weeks",
       lessons: 40,
       price: "₹1,999",
+      originalPrice: "₹5,000",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80",
@@ -66,6 +68,7 @@ const Courses = () => {
       duration: "6 weeks",
       lessons: 24,
       price: "₹1,999",
+      originalPrice: "₹5,000",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80",
@@ -106,6 +109,7 @@ const Courses = () => {
       duration: "14 weeks",
       lessons: 50,
       price: "₹1,999",
+      originalPrice: "₹5,000",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
@@ -126,6 +130,7 @@ const Courses = () => {
       duration: "8 weeks",
       lessons: 32,
       price: "₹1,999",
+      originalPrice: "₹5,000",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
@@ -146,6 +151,7 @@ const Courses = () => {
       duration: "10 weeks",
       lessons: 38,
       price: "₹1,999",
+      originalPrice: "₹5,000",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
@@ -166,6 +172,7 @@ const Courses = () => {
       duration: "16 weeks",
       lessons: 55,
       price: "₹1,999",
+      originalPrice: "₹5,000",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
@@ -186,6 +193,7 @@ const Courses = () => {
       duration: "12 weeks",
       lessons: 42,
       price: "₹1,999",
+      originalPrice: "₹5,000",
       isPremium: true,
       image:
         "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=800&q=80",
@@ -207,8 +215,7 @@ const Courses = () => {
       lessons: 30,
       price: "₹499",
       isPremium: true,
-      image:
-        "/images/hindi.jpg",
+      image: "/images/hindi.jpg",
       topics: [
         "Hindi Alphabet",
         "Basic Grammar",
@@ -227,8 +234,7 @@ const Courses = () => {
       lessons: 20,
       price: "₹499",
       isPremium: true,
-      image:
-        "/images/english.jpeg",
+      image: "/images/english.jpeg",
       topics: [
         "Advanced Grammar",
         "Vocabulary Expansion",
@@ -247,8 +253,7 @@ const Courses = () => {
       lessons: 28,
       price: "₹499",
       isPremium: true,
-      image:
-        "/images/arabic.jpeg",
+      image: "/images/arabic.jpeg",
       topics: [
         "Arabic Alphabet",
         "Basic Grammar",
@@ -259,32 +264,22 @@ const Courses = () => {
     },
   ];
 
-  // Filter courses based on selected category
   const filteredCourses =
     selectedCategory === "all"
       ? courses
       : courses.filter((course) => course.level === selectedCategory);
 
-  // Handle category change with smooth transition
   const handleCategoryChange = (categoryId) => {
-    console.log("Category changed to:", categoryId);
     setIsAnimating(true);
     setSelectedCategory(categoryId);
-
-    // Reset animation state after a brief delay
     setTimeout(() => {
       setIsAnimating(false);
     }, 100);
   };
 
-  // Log filtered courses for debugging
   useEffect(() => {
     console.log("Selected category:", selectedCategory);
     console.log("Filtered courses count:", filteredCourses.length);
-    console.log(
-      "Filtered courses:",
-      filteredCourses.map((c) => ({ id: c.id, title: c.title, level: c.level }))
-    );
   }, [selectedCategory, filteredCourses]);
 
   const getLevelColor = (level) => {
@@ -338,7 +333,7 @@ const Courses = () => {
             }`}
           >
             {filteredCourses.length > 0 ? (
-              filteredCourses.map((course, index) => (
+              filteredCourses.map((course) => (
                 <Card
                   key={`${course.id}-${selectedCategory}`}
                   className="hover:shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden"
@@ -409,9 +404,16 @@ const Courses = () => {
                       {/* Price and CTA */}
                       <div className="pt-4 border-t">
                         <div className="flex justify-between items-center">
-                          <span className="text-2xl font-bold text-primary">
-                            {course.price}
-                          </span>
+                          <div className="flex items-baseline space-x-2">
+                            {course.originalPrice && (
+                              <span className="text-gray-400 line-through text-lg">
+                                {course.originalPrice}
+                              </span>
+                            )}
+                            <span className="text-2xl font-bold text-primary">
+                              {course.price}
+                            </span>
+                          </div>
                           <Button
                             className="btn-primary"
                             onClick={() => {
@@ -426,7 +428,7 @@ const Courses = () => {
                                   "https://chat.whatsapp.com/DU3aiu3CLy15dt6eVGW91K?mode=ac_t",
                                   "_blank"
                                 );
-                              }, 2000); // slight delay so toast shows first
+                              }, 2000);
                             }}
                           >
                             Enroll Now

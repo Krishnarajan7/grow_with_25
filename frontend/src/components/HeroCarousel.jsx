@@ -21,7 +21,8 @@ const HeroCarousel = () => {
       title: "Full Stack Development",
       description:
         "Master modern web development with React, Node.js, and databases",
-      price: "₹1,999",
+      originalPrice: "₹5,000",
+      discountedPrice: "₹1,999",
       duration: "16 weeks",
       students: "2,847",
       rating: "4.8",
@@ -35,12 +36,12 @@ const HeroCarousel = () => {
       title: "Data Science",
       description:
         "Learn Python, machine learning, and data analysis techniques",
-      price: "₹1,999",
+      originalPrice: "₹5,000",
+      discountedPrice: "₹1,999",
       duration: "12 weeks",
       students: "1,945",
       rating: "4.9",
-      image:
-        "/images/datas.jpg",
+      image: "/images/datas.jpg",
       gradient: "from-emerald-600 to-green-600",
       topics: ["Python", "Machine Learning", "Data Analysis", "Statistics"],
     },
@@ -49,12 +50,12 @@ const HeroCarousel = () => {
       title: "Digital Marketing",
       description:
         "Master SEO, social media marketing, and digital advertising",
-      price: "₹1,999",
+      originalPrice: "₹5,000",
+      discountedPrice: "₹1,999",
       duration: "10 weeks",
       students: "3,241",
       rating: "4.7",
-      image:
-        "/images/dm.jpg",
+      image: "/images/dm.jpg",
       gradient: "from-green-600 to-teal-600",
       topics: ["SEO", "Social Media", "Content Marketing", "Analytics"],
     },
@@ -63,7 +64,8 @@ const HeroCarousel = () => {
       title: "Stock Market",
       description:
         "Learn investment strategies, trading, and financial planning",
-      price: "₹599",
+      originalPrice: "₹2,000",
+      discountedPrice: "₹599",
       duration: "8 weeks",
       students: "1,823",
       rating: "4.6",
@@ -76,12 +78,12 @@ const HeroCarousel = () => {
       id: 5,
       title: "Python Programming",
       description: "Complete Python course from basics to advanced concepts",
-      price: "₹1,999",
+      originalPrice: "₹5,000",
+      discountedPrice: "₹1,999",
       duration: "14 weeks",
       students: "2,156",
       rating: "4.8",
-      image:
-        "/images/Python.png",
+      image: "/images/Python.png",
       gradient: "from-emerald-600 to-teal-600",
       topics: ["Python Basics", "OOP", "Web Scraping", "Automation"],
     },
@@ -89,12 +91,12 @@ const HeroCarousel = () => {
       id: 6,
       title: "Hindi Language",
       description: "Learn Hindi language with proper grammar and communication",
-      price: "₹499",
+      originalPrice: "₹1,500",
+      discountedPrice: "₹499",
       duration: "6 weeks",
       students: "1,432",
       rating: "4.5",
-      image:
-        "/images/hindi.jpg",
+      image: "/images/hindi.jpg",
       gradient: "from-teal-600 to-green-600",
       topics: ["Grammar", "Speaking", "Writing", "Literature"],
     },
@@ -102,7 +104,8 @@ const HeroCarousel = () => {
       id: 7,
       title: "Java Programming",
       description: "Master Java development for enterprise applications",
-      price: "₹1,999",
+      originalPrice: "₹5,000",
+      discountedPrice: "₹1,999",
       duration: "16 weeks",
       students: "1,987",
       rating: "4.7",
@@ -115,12 +118,12 @@ const HeroCarousel = () => {
       id: 8,
       title: "Artificial Intelligence",
       description: "Explore AI concepts, neural networks, and machine learning",
-      price: "₹1,999",
+      originalPrice: "₹5,000",
+      discountedPrice: "₹1,999",
       duration: "18 weeks",
       students: "1,543",
       rating: "4.9",
-      image:
-        "/images/ai.jpg",
+      image: "/images/ai.jpg",
       gradient: "from-emerald-600 to-teal-600",
       topics: ["Neural Networks", "Deep Learning", "Computer Vision", "NLP"],
     },
@@ -128,7 +131,8 @@ const HeroCarousel = () => {
       id: 9,
       title: "React Development",
       description: "Build modern web applications with React and Redux",
-      price: "₹1,999",
+      originalPrice: "₹5,000",
+      discountedPrice: "₹1,999",
       duration: "12 weeks",
       students: "2,876",
       rating: "4.8",
@@ -142,12 +146,12 @@ const HeroCarousel = () => {
       title: "Graphic Design",
       description:
         "Master visual design principles and industry-standard tools",
-      price: "₹1,999",
+      originalPrice: "₹5,000",
+      discountedPrice: "₹1,999",
       duration: "10 weeks",
       students: "1,654",
       rating: "4.6",
-      image:
-        "/images/gd.jpg",
+      image: "/images/gd.jpg",
       gradient: "from-green-600 to-emerald-600",
       topics: ["Photoshop", "Illustrator", "Design Theory", "Branding"],
     },
@@ -232,7 +236,11 @@ const HeroCarousel = () => {
                   size="lg"
                   className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto"
                 >
-                  Enroll Now - {currentCourse.price}
+                  Enroll Now -{" "}
+                  <span className="line-through text-gray-300 mr-2">
+                    {currentCourse.originalPrice}
+                  </span>
+                  <span className="font-bold">{currentCourse.discountedPrice}</span>
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
@@ -259,13 +267,15 @@ const HeroCarousel = () => {
                     alt={currentCourse.title}
                     className="w-full h-48 sm:h-56 lg:h-64 object-cover"
                   />
-                  {/* Optional Gradient Overlay at Bottom */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
 
                   {/* Price Badge */}
                   <div className="absolute top-4 right-4">
                     <Badge className="bg-white/90 text-gray-900 font-semibold shadow-md">
-                      {currentCourse.price}
+                      <span className="line-through text-gray-400 mr-1">
+                        {currentCourse.originalPrice}
+                      </span>
+                      {currentCourse.discountedPrice}
                     </Badge>
                   </div>
 
